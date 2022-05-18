@@ -82,6 +82,7 @@ def savePayment(request,T_PAYMENT_id):
             payment_obj.bank_name           = userForm['bank_name'].data
             payment_obj.payment_money       = userForm['payment_money'].data
             payment_obj.payment_valid_flg   = userForm['payment_valid_flg'].data
+            payment_obj.payment_memo        = userForm['payment_memo'].data
 
             #オブジェクトで格納しないといけない？からこの方法では変更できない
             #payment_obj.customer_id.customer_name         = userForm['customer_id']['customer_name'].data
