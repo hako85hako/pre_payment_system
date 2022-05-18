@@ -1,50 +1,63 @@
-
-<div class="collapse navbar-collapse" id="responsiveMenu">
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-            {% if nav_key ==  0 %}
-              <a class="nav-link active" href="#">
-            {% else %}
-              <a class="nav-link" href="#">
-            {% endif %}
+{% load static %} 
+<a id="skippy" class="sr-only sr-only-focusable" href="#content">
+  <div class="container">
+    <span class="skiplink-text">Skip to main content</span>
+  </div>
+</a>
+<nav class="my_navbar navbar navbar-expand-md nav-tabs  d-flex align-items-end">
+  <a class="img-fluid" href="#"><!-- 高さ調整必要 -->
+      <img src="{% static 'image/logo01.png' %}" class="logo-img">
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#responsiveMenu" aria-controls="responsiveMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="responsiveMenu">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              {% if nav_key ==  0 %}
+                <a class="nav-link active" href="#">
+              {% else %}
+                <a class="nav-link" href="#">
+              {% endif %}
+                <span data-feather="edit-2"></span>
+                入金管理</a>
+          </li>
+          <li class="nav-item">
+              {% if nav_key == 1  %}
+                <a class="nav-link active" href="#">
+              {% else %}
+                <a class="nav-link" href="#">
+              {% endif %}
+                <span data-feather="edit-2"></span>
+                受注管理</a> 
+          </li>
+          <li class="nav-item">
+              {% if nav_key == 2  %}
+                <a class="nav-link active" href="#">
+              {% else %}
+                <a class="nav-link" href="#">
+              {% endif %}
+                <span data-feather="edit-2"></span>
+                経費管理</a> 
+          </li>
+          <li class="nav-item">
+              {% if nav_key == 3  %}
+                <a class="nav-link active" href="#">
+              {% else %}
+                <a class="nav-link" href="#">
+              {% endif %}
+                <span data-feather="edit-2"></span>
+                マスタ登録</a> 
+          </li>
+          <li class="nav-item">
+              {% if nav_key == 4  %}
+                <a class="nav-link active" href="#">
+              {% else %}
+                <a class="nav-link" href="#">
+              {% endif %}
               <span data-feather="edit-2"></span>
-              入金管理</a>
-        </li>
-        <li class="nav-item">
-            {% if nav_key == 1  %}
-              <a class="nav-link active" href="#">
-            {% else %}
-              <a class="nav-link" href="#">
-            {% endif %}
-              <span data-feather="edit-2"></span>
-              受注管理</a> 
-        </li>
-        <li class="nav-item">
-            {% if nav_key == 2  %}
-              <a class="nav-link active" href="#">
-            {% else %}
-              <a class="nav-link" href="#">
-            {% endif %}
-              <span data-feather="edit-2"></span>
-              経費管理</a> 
-        </li>
-        <li class="nav-item">
-            {% if nav_key == 3  %}
-              <a class="nav-link active" href="#">
-            {% else %}
-              <a class="nav-link" href="#">
-            {% endif %}
-              <span data-feather="edit-2"></span>
-              マスタ登録</a> 
-        </li>
-        <li class="nav-item">
-            {% if nav_key == 4  %}
-              <a class="nav-link active" href="#">
-            {% else %}
-              <a class="nav-link" href="#">
-            {% endif %}
-            <span data-feather="edit-2"></span>
-            請求書発行</a> 
-      </li>
-    </ul>
-</div>
+              請求書発行</a> 
+          </li>
+      </ul>
+  </div>
+</nav>
