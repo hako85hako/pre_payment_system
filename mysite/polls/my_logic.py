@@ -16,6 +16,7 @@ def payment_form_list(payment_object_list):
            {
             'id'                :   payment_object.id, 
             'bank_name'         :   payment_object.bank_name, 
+            'payment_date'      :   payment_object.payment_date,
             'payment_money'     :   payment_object.payment_money,
             'payment_memo'      :   payment_object.payment_memo,
             'customer_id'       :   payment_object.customer_id,

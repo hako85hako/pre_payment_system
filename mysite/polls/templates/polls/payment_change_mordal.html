@@ -1,6 +1,6 @@
 {% load static %} 
 <!-- モーダルを開くボタン・リンク -->
-
+{% if mode == "add" %}
    <!-- ボタン・リンククリック後に表示される画面の内容 -->
   <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
     <div class="modal-dialog">
@@ -25,3 +25,29 @@
   <div class="container">
     <button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#testModal">編集</button>
   </div>
+{% endif %}
+
+
+<!-- モーダルを開くボタン・リンク -->
+{% if mode == "create" %}
+   <!-- ボタン・リンククリック後に表示される画面の内容 -->
+  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">編集画面</h4>
+            </div>
+            <div class="modal-body">
+              <form action='{% url "addPayment" %}' method="post" id="payment_info_create">
+                  {% csrf_token %}
+                  {{ payment_create_form }}
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary" form="payment_info_create">保存</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+            </div>
+        </div>
+    </div>
+  </div>
+{% endif %}

@@ -99,24 +99,17 @@
             <input type="text" id="date_sample">
           </form>
 
-
-
-        <form action='{% url "addPayment" %}' method='post' class='form'>
-            {% csrf_token %}
-            
-            <button type='submit' class='btn btn-outline-primary'>登録</button>
-            <a href='#' class='btn btn-outline-secondary'>戻る</a>
-        </form> 
-
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <button type="button" class="rounded-pill my_button btn btn-sm btn-outline-secondary">入力</button>
-            <button type="button" class="rounded-pill my_button btn btn-sm btn-outline-secondary">修正</button>
+            <button type="button" class="rounded-pill my_button btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#createModal">新規追加</button>
+            <button type="button" class="rounded-pill my_button btn btn-sm btn-outline-secondary" onclick="location.href='/polls' " >更新</button>
             <button type="button" class="rounded-pill my_button btn btn-sm btn-outline-secondary">印刷</button>
           </div>
         </div>
       </div>
-
+      {% with mode="create" %}
+        {% include "polls/payment_change_mordal.html" %}
+      {% endwith %}
       <!-- <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas> -->
       
       <div>
@@ -172,14 +165,16 @@
                     </div>
                   </td>
                   <td>{{ payment_info.0.id }}</td>
-                  <td>{{ payment_info.0.updated_at }}</td>
+                  <td>{{ payment_info.0.payment_date }}</td>
                   <td>{{ payment_info.0.customer_id.customer_name }}</td>
                   <td>{{ payment_info.0.bank_name }}</td>
                   <td>{{ payment_info.0.payment_kind_id.payment_kind_name }}</td>
                   <td>￥{{ payment_info.0.payment_money }}</td>
                   <td>{{ payment_info.0.payment_memo }}</td>
                   <td>
-                    {% include "polls/payment_change_mordal.html" %}
+                    {% with mode="add" %}
+                      {% include "polls/payment_change_mordal.html" %}
+                    {% endwith %}
                   </td>
                   <td></td>
                 </tr>

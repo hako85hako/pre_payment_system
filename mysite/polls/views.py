@@ -34,7 +34,7 @@ def index(request):
             payment_valid_flg = True
         )
 
-    #取得したobjectの合計値を算出する
+    # 取得したobjectの合計値を算出する
     payment_total = my_logic.total_payment(payment_obj_list)
     payment_form_list  = my_logic.payment_form_list(payment_obj_list)
     template = loader.get_template('polls/index.html')
@@ -42,10 +42,14 @@ def index(request):
     nav_key = 0
     payment_info_list = list()
 
+    # 新規登録用フォーム
+    payment_create_form = T_PAYMENT_FORM()
+
     for payment_obj,payment_form in zip(payment_obj_list,payment_form_list):
         payment_info_list.append([payment_obj,payment_form])
     
     context = {
+        'payment_create_form' : payment_create_form ,
         'payment_info_list': payment_info_list,
         'payment_total':payment_total,
         'nav_key':nav_key,
@@ -80,6 +84,7 @@ def savePayment(request,T_PAYMENT_id):
         if userForm.is_valid():
             payment_obj = get_object_or_404(T_PAYMENT, pk=T_PAYMENT_id)
             payment_obj.bank_name           = userForm['bank_name'].data
+            payment_obj.payment_date        = userForm['payment_date'].data
             payment_obj.payment_money       = userForm['payment_money'].data
             payment_obj.payment_valid_flg   = userForm['payment_valid_flg'].data
             payment_obj.payment_memo        = userForm['payment_memo'].data
